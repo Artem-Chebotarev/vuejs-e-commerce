@@ -39,6 +39,7 @@ export default {
   },
   mounted() {
     this.$set(this.item_data, "quantity", 1);
+    /*когда айтем в корзине маунтится ставим его количество равное 1 */
   },
 };
 </script>
