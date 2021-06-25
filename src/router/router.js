@@ -17,6 +17,7 @@ let router = new Router({
       path: '/cart',
       name: 'cart',
       component: vCart,
+      props: true, // для передачи пропсов
     },
   ]
 })
