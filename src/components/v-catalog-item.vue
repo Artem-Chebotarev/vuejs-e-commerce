@@ -32,6 +32,10 @@ export default {
       this.$emit('addToCart', this.product_data)
     },
   },
+  mounted() {
+    this.$set(this.product_data, "quantity", 1);
+    /*когда айтем в корзине маунтится ставим его количество равное 1 */
+  }
 };
 </script>
 

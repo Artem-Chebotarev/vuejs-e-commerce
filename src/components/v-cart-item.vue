@@ -12,7 +12,11 @@
     </div>
     <div class="v-cart-item-quantity">
       <p>Quantity:</p>
-      {{ item_data.quantity }}
+      <span>
+        <span class="quantity__btn" @click="decreaseAmount">-</span>
+        {{ item_data.quantity }}
+        <span class="quantity__btn" @click="increaseAmount">+</span>
+      </span>
     </div>
     <button @click="deleteFromCart">Delete</button>
   </div>
@@ -34,12 +38,14 @@ export default {
   },
   methods: {
     deleteFromCart() {
-      this.$emit('deleteFromCart');
+      this.$emit("deleteFromCart");
     },
-  },
-  mounted() {
-    this.$set(this.item_data, "quantity", 1);
-    /*когда айтем в корзине маунтится ставим его количество равное 1 */
+    decreaseAmount() {
+      this.$emit("decreaseAmount");
+    },
+    increaseAmount() {
+      this.$emit("increaseAmount");
+    },
   },
 };
 </script>
@@ -48,11 +54,17 @@ export default {
 .v-cart-item {
   display: flex;
   flex-wrap: nowrap;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   box-shadow: 0 0 8px 0 #e0e0e0;
+  margin-bottom: $margin * 3;
+
   &__image {
     max-width: 50px;
+  }
+
+  .quantity__btn {
+    cursor: pointer;
   }
 }
 </style>
