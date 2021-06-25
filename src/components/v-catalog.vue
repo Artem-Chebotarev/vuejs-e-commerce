@@ -6,7 +6,7 @@
         v-for="item in PRODUCTS"
         :key="item.article"
         :product_data="item"
-        @sendArticle="showChildArticle"
+        @addToCart="addToCart"
       />
     </div>
   </div>
@@ -27,10 +27,10 @@ export default {
     ...mapGetters(['PRODUCTS']),
   },
   methods: {
-    ...mapActions(["GET_PRODUCTS_FROM_API"]),
+    ...mapActions(['GET_PRODUCTS_FROM_API', 'ADD_PRODUCT_TO_STATE']),
 
-    showChildArticle(data) {
-      console.log(data);
+    addToCart(product) {
+      this.ADD_PRODUCT_TO_STATE(product);
     },
   },
   mounted() {
