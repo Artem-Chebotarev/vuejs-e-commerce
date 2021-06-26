@@ -37,6 +37,8 @@ export default {
     },
   },
   mounted() {
+    // this.$store.state.products // если не использовать mapGetters
+    // this.$store.dispatch('GET_PRODUCTS_FROM_API') // если не использовать mapActions
     this.GET_PRODUCTS_FROM_API();
   },
 };

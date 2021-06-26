@@ -2,9 +2,9 @@
   <div class="v-cart-item">
     <img
       class="v-cart-item__image"
-      :src="require('../assets/images/' + item_data.image)"
+      :src="require('@/assets/images/' + item_data.image)"
       alt="product"
-    />
+    /> <!-- @ - дает возможность двигаться от корня -->
     <div class="v-cart-item__info">
       <p class="v-cart-item-name">{{ item_data.name }}</p>
       <p class="v-cart-item-price">Price: {{ item_data.price }}</p>
