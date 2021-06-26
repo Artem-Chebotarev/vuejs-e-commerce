@@ -1,4 +1,12 @@
 export default {
+  SWITH_MOBILE: (state) => {
+    state.isMobile = true;
+    state.isDesktop = false;
+  },
+  SWITH_DESKTOP: (state) => {
+    state.isDesktop = true;
+    state.isMobile = false;
+  },
   SET_PRODUCTS_TO_STATE: (state, products) => {
     state.products = products;
   },

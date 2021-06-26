@@ -54,7 +54,7 @@ export default {
 .v-cart-item {
   display: flex;
   flex-wrap: nowrap;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   box-shadow: 0 0 8px 0 #e0e0e0;
   margin-bottom: $margin * 3;

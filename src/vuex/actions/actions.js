@@ -1,5 +1,11 @@
 
 export default {
+  SET_DESKTOP({ commit }) {
+    commit('SWITH_DESKTOP');
+  },
+  SET_MOBILE({ commit }) {
+    commit('SWITH_MOBILE');
+  },
   ADD_PRODUCT_TO_STATE({ commit }, product) {
     commit('SET_CART', product);
   },
