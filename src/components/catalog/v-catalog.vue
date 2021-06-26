@@ -81,7 +81,8 @@ export default {
   &__list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    // justify-content: space-around;
+    column-gap: 5%; // задает расстояние между флекс элементами внутри контейнера
     align-items: center;
   }
   &__link_to_cart {
