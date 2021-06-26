@@ -15,7 +15,7 @@
     />
     <div class="v-cart__total">
       <p class="total__name">Total:</p>
-      <p>{{ getTotalPrice }} rub</p>
+      <p>{{ getTotalPrice | toFix }}</p>
     </div>
   </div>
 </template>
@@ -23,6 +23,7 @@
 <script>
 import vCartItem from "./v-cart-item.vue";
 import { mapActions } from "vuex";
+import toFix from "../../filters/toFix";
 export default {
   name: "v-cart",
   components: {
@@ -36,13 +37,22 @@ export default {
       },
     },
   },
+  filters: {
+    toFix,
+  },
   computed: {
     getTotalPrice() {
-        return this.cart_data.length ? this.cart_data.reduce((a, b) => a + +b.price * +b.quantity, 0) : 0;
+      return this.cart_data.length
+        ? this.cart_data.reduce((a, b) => a + +b.price * +b.quantity, 0)
+        : 0;
     },
   },
   methods: {
-    ...mapActions(["DELETE_PRODUCT_FROM_STATE", 'INCREASE_QUANTITY_IN_STATE', 'DECREASE_QUANTITY_IN_STATE']),
+    ...mapActions([
+      "DELETE_PRODUCT_FROM_STATE",
+      "INCREASE_QUANTITY_IN_STATE",
+      "DECREASE_QUANTITY_IN_STATE",
+    ]),
 
     removeFromCart(index) {
       this.DELETE_PRODUCT_FROM_STATE(index);

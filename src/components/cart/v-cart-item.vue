@@ -4,10 +4,11 @@
       class="v-cart-item__image"
       :src="require('@/assets/images/' + item_data.image)"
       alt="product"
-    /> <!-- @ - дает возможность двигаться от корня -->
+    />
+    <!-- @ - дает возможность двигаться от корня -->
     <div class="v-cart-item__info">
       <p class="v-cart-item-name">{{ item_data.name }}</p>
-      <p class="v-cart-item-price">Price: {{ item_data.price }}</p>
+      <p class="v-cart-item-price">Price: {{ item_data.price | toFix }}</p>
       <p class="v-cart-item-price">Article: {{ item_data.article }}</p>
     </div>
     <div class="v-cart-item-quantity">
@@ -23,6 +24,8 @@
 </template>
 
 <script>
+import toFix from "../../filters/toFix";
+
 export default {
   name: "v-cart-item",
   props: {
@@ -35,6 +38,9 @@ export default {
   },
   data() {
     return {};
+  },
+  filters: {
+    toFix,
   },
   methods: {
     deleteFromCart() {

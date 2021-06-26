@@ -15,8 +15,8 @@
       />
       <div>
         <p class="v-catalog-item-name">{{ product_data.name }}</p>
-        <p class="v-catalog-item-price">Price: {{ product_data.price }} rub</p>
-        <p class="v-catalog-item-price">{{ product_data.category }} rub</p>
+        <p class="v-catalog-item-price">Price: {{ product_data.price | toFix}}</p>
+        <p class="v-catalog-item-price">{{ product_data.category }}</p>
       </div>
     </vPopup>
 
@@ -27,7 +27,7 @@
     />
     <!-- @ - дает возможность двигаться от корня -->
     <p class="v-catalog-item-name">{{ product_data.name }}</p>
-    <p class="v-catalog-item-price">Price: {{ product_data.price }} rub</p>
+    <p class="v-catalog-item-price">Price: {{ product_data.price | toFix }}</p>
     <div class="v-catalog-item__container_for_btn">
       <button
         class="v-catalog-item__add_to_cart_btn btn"
@@ -44,6 +44,7 @@
 
 <script>
 import vPopup from "../catalog/popup/v-popup.vue";
+import toFix from "../../filters/toFix";
 
 export default {
   name: "v-catalog-item",
@@ -62,6 +63,9 @@ export default {
     return {
       isInfoPopupVisible: false,
     };
+  },
+  filters: {
+    toFix,
   },
   methods: {
     addToCart() {

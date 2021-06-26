@@ -3,7 +3,7 @@
     {
       "image": "1.jpg",
       "name": "T-shirt 1",
-      "price": 210,
+      "price": 210.232132,
       "article": "T1",
       "available": true,
       "category": "Мужские"
@@ -11,7 +11,7 @@
     {
       "image": "2.jpg",
       "name": "T-shirt 2",
-      "price": 315,
+      "price": 315.32132112,
       "article": "T2",
       "available": true,
       "category": "Женские"
@@ -19,7 +19,7 @@
     {
       "image": "3.jpg",
       "name": "T-shirt 3",
-      "price": 420,
+      "price": 420.321321,
       "article": "T3",
       "available": false,
       "category": "Женские"
@@ -27,7 +27,7 @@
     {
       "image": "4.jpg",
       "name": "T-shirt 4",
-      "price": 530,
+      "price": 530.321321,
       "article": "T4",
       "available": true,
       "category": "Мужские"
@@ -35,7 +35,7 @@
     {
       "image": "5.jpg",
       "name": "T-shirt 5",
-      "price": 650,
+      "price": 650.321312,
       "article": "T5",
       "available": false,
       "category": "Женские"
@@ -43,7 +43,7 @@
     {
       "image": "6.jpeg",
       "name": "T-shirt 6",
-      "price": 870,
+      "price": 870.321321,
       "article": "T6",
       "available": true,
       "category": "Женские"
