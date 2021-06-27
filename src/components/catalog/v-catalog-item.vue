@@ -1,5 +1,5 @@
 <template>
-  <div class="v-catalog-item">
+  <div class="v-catalog-item" @click="productClick">
     <!-- так прокидывается пропс от родителя к ребенку -->
     <vPopup
       v-if="isInfoPopupVisible"
@@ -68,12 +68,18 @@ export default {
     toFix,
   },
   methods: {
+    productClick() {
+      this.$emit('productClick', this.product_data.article);
+    },
+
     addToCart() {
       this.$emit("addToCart", this.product_data);
     },
+
     showPopupInfo() {
       this.isInfoPopupVisible = true;
     },
+
     removePopup() {
       this.isInfoPopupVisible = false;
     },

@@ -45,6 +45,7 @@
         :key="item.article"
         :product_data="item"
         @addToCart="addToCart"
+        @productClick="productClick"
       />
     </div>
   </div>
@@ -98,6 +99,10 @@ export default {
     //   );
     //   this.selected = category.name;
     // },
+
+    productClick(article) {
+      this.$router.push({name: 'product', query: {'product': article}});
+    },
 
     sortByCategories(category) {
       this.sortedProducts = [...this.PRODUCTS];
