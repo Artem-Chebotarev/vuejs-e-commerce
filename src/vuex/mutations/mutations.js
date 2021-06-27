@@ -1,4 +1,7 @@
 export default {
+  SEARCH_PRODUCT_IN_CATALOG: (state, value) => {
+    state.searchValue = value;
+  },
   SWITH_MOBILE: (state) => {
     state.isMobile = true;
     state.isDesktop = false;

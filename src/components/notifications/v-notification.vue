@@ -66,7 +66,7 @@ export default {
 <style lang="scss">
 .v-notification {
   position: fixed;
-  top: 80px;
+  top: 150px;
   right: 16px;
   z-index: 10;
 

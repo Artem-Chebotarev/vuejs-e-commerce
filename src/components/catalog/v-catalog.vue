@@ -1,14 +1,6 @@
 <template>
   <div class="v-catalog">
-
-    <vNotification
-    :messages="messages"
-    :timeout="3000"
-    >
-      
-
-    </vNotification>
-
+    <vNotification :messages="messages" :timeout="3000"> </vNotification>
 
     <router-link :to="{ name: 'cart', params: { cart_data: CART } }">
       <!-- в парамс передаем пропсы -->
@@ -82,11 +74,11 @@ export default {
       sortedProducts: [],
       minPrice: 0,
       maxPrice: 1000,
-      messages: []
+      messages: [],
     };
   },
   computed: {
-    ...mapGetters(["PRODUCTS", "CART", "IS_DESKTOP"]),
+    ...mapGetters(["PRODUCTS", "CART", "IS_DESKTOP", "SEARCH_VALUE"]),
 
     filteredProducts() {
       if (this.sortedProducts.length) {
@@ -125,15 +117,14 @@ export default {
     },
 
     addToCart(product) {
-      this.ADD_PRODUCT_TO_STATE(product)
-        .then(() => {
-          let timeStamp = Date.now().toLocaleString();
-          this.messages.unshift({
-            name: "Товар добавлен в корзину",
-            icon: 'check_circle',
-            id: timeStamp,
-          })
+      this.ADD_PRODUCT_TO_STATE(product).then(() => {
+        let timeStamp = Date.now().toLocaleString();
+        this.messages.unshift({
+          name: "Товар добавлен в корзину",
+          icon: "check_circle",
+          id: timeStamp,
         });
+      });
     },
     setRangeSliders() {
       if (this.minPrice > this.maxPrice) {
@@ -143,11 +134,29 @@ export default {
       }
       this.sortByCategories();
     },
+    sortProductsBySearchValue(value) {
+      this.sortedProducts = [...this.PRODUCTS]; // каждый раз когда делаем поисковый запрос должны вернуться к первоначальному значению
+      if (value) {
+        this.sortedProducts = this.sortedProducts.filter((product) =>
+          product.name.toLowerCase().includes(value.toLowerCase())
+        );
+      } else {
+        this.sortedProducts = this.PRODUCTS;
+      }
+    },
+  },
+  watch: {
+    SEARCH_VALUE() {
+      this.sortProductsBySearchValue(this.SEARCH_VALUE); // когда SEARCH_VALUE меняется, вызываем функцию sortProductsBySearchValue с этим новым значением
+    },
   },
   mounted() {
     // this.$store.state.products // если не использовать mapGetters
     // this.$store.dispatch('GET_PRODUCTS_FROM_API') // если не использовать mapActions
-    this.GET_PRODUCTS_FROM_API().then(() => this.sortByCategories());
+    this.GET_PRODUCTS_FROM_API().then(() => {
+      this.sortByCategories();
+      this.sortProductsBySearchValue(this.SEARCH_VALUE); // чтобы вотчер сработал в начале
+    });
   },
 };
 </script>
@@ -162,14 +171,14 @@ export default {
   &__list {
     display: flex;
     flex-wrap: wrap;
-    // justify-content: space-around;
-    column-gap: 5%; // задает расстояние между флекс элементами внутри контейнера
+    justify-content: space-around;
+    // column-gap: 5%; // задает расстояние между флекс элементами внутри контейнера
     align-items: center;
   }
   &__link_to_cart {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 95px;
+    right: 50px;
     padding: $padding * 2;
     border: solid 1px gray;
   }
@@ -180,9 +189,12 @@ export default {
   justify-content: space-between;
   align-items: center;
 }
+.range-values {
+  margin-right: 50px;
+}
 .range-slider {
   width: 200px;
-  margin: auto 16px;
+  margin: auto 0px;
   text-align: center;
   position: relative;
 }

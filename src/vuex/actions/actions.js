@@ -1,5 +1,8 @@
 
 export default {
+  SEARCH_PRODUCT({ commit }, value) {
+    commit('SEARCH_PRODUCT_IN_CATALOG', value);
+  },
   SET_DESKTOP({ commit }) {
     commit('SWITH_DESKTOP');
   },

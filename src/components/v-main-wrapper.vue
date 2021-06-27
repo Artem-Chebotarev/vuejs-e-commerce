@@ -1,5 +1,6 @@
 <template>
   <div class="v-main-wrapper">
+    <vHeader />
     <keep-alive>
       <router-view></router-view>
     </keep-alive>
@@ -15,13 +16,15 @@
 // import vCatalog from "./v-catalog.vue";
 // import vCart from "./v-cart.vue";
 // import { mapGetters } from "vuex";
+import vHeader from "../components/layouts/v-header.vue";
 
 export default {
   name: "v-main-wrapper",
-  // components: {
-  //   vCatalog,
-  //   vCart,
-  // },
+  components: {
+    // vCatalog,
+    // vCart,
+    vHeader,
+  },
   props: {},
   data() {
     return {};
@@ -31,13 +34,12 @@ export default {
   },
   methods: {},
   watch: {},
-  
 };
 </script>
 
 <style>
 .v-main-wrapper {
-  max-width: 900px;
+  /* max-width: 900px; */
   margin: 0 auto;
 }
 </style>
