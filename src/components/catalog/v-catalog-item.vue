@@ -1,5 +1,6 @@
 <template>
-  <div class="v-catalog-item" @click="productClick">
+<!-- Для работы клика на компоненте я использую @click.native, а чтобы клик не распространялся на "add to cart" я бы сделал - @click.self -->
+  <div class="v-catalog-item" @click.self="productClick"> 
     <!-- так прокидывается пропс от родителя к ребенку -->
     <vPopup
       v-if="isInfoPopupVisible"
