@@ -179,6 +179,7 @@ export default {
     justify-content: space-around;
     // column-gap: 5%; // задает расстояние между флекс элементами внутри контейнера
     align-items: center;
+    margin-top: 50px;
   }
   &__link_to_cart {
     position: absolute;
@@ -186,6 +187,9 @@ export default {
     right: 50px;
     padding: $padding * 2;
     border: solid 1px gray;
+    border-radius: $radius;
+    color: #ffffff;
+    background: green;
   }
 }
 

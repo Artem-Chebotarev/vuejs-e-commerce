@@ -19,7 +19,7 @@
         <span class="quantity__btn" @click="increaseAmount">+</span>
       </span>
     </div>
-    <button @click="deleteFromCart">Delete</button>
+    <button class="btn" @click="deleteFromCart">Delete</button>
   </div>
 </template>
 

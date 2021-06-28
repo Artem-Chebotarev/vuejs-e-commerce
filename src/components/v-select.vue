@@ -2,7 +2,7 @@
   <div class='v-select'>
     <p
         class="title"
-        @click="areOptionsVisible = !areOptionsVisible"
+        @click="clickOnSelect"
     >{{selected}}</p>
     <div
         class="options"
@@ -22,6 +22,7 @@
 <script>
   export default {
     name: "v-select",
+
     props: {
       options: {
         type: Array,
@@ -29,32 +30,42 @@
           return []
         }
       },
+
       selected: {
         type: String,
         default: ''
       },
+
       isExpanded: {
         type: Boolean,
         default: false
       },
     },
+
     data() {
       return {
         areOptionsVisible: false
       }
     },
     methods: {
+      clickOnSelect() {
+        this.areOptionsVisible = !this.areOptionsVisible;
+      },
+
       selectOption(option) {
         this.$emit('select', option)
         this.areOptionsVisible = false;
       },
+
       hideSelect() {
         this.areOptionsVisible = false;
       }
     },
+
     mounted() {
       document.addEventListener('click', this.hideSelect.bind(this), true)
     },
+
     beforeDestroy() {
       document.removeEventListener('click', this.hideSelect)
     }
@@ -81,7 +92,7 @@
     position: absolute;
     top: 30px;
     left: 0;
-    width: 100%;
+    width: 182px;
     padding: 8px;
   }
   .options p:hover {
